@@ -15,6 +15,10 @@
 		4D3B39361D8866FC003B7D59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3B39341D8866FC003B7D59 /* LaunchScreen.storyboard */; };
 		4D3B39411D8866FC003B7D59 /* card_matchingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B39401D8866FC003B7D59 /* card_matchingTests.m */; };
 		4D3B394C1D8866FC003B7D59 /* card_matchingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B394B1D8866FC003B7D59 /* card_matchingUITests.m */; };
+		4D3B39611D888B7D003B7D59 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B39601D888B7D003B7D59 /* Card.m */; };
+		4D3B39661D889662003B7D59 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B39651D889662003B7D59 /* Deck.m */; };
+		4D3B39691D89862D003B7D59 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B39681D89862D003B7D59 /* PlayingCard.m */; };
+		4D3B396C1D8990B0003B7D59 /* PlayingSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D3B396B1D8990B0003B7D59 /* PlayingSurface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		4D3B39471D8866FC003B7D59 /* card-matchingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "card-matchingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D3B394B1D8866FC003B7D59 /* card_matchingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = card_matchingUITests.m; sourceTree = "<group>"; };
 		4D3B394D1D8866FC003B7D59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D3B395F1D888B7D003B7D59 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = Model/Card.h; sourceTree = "<group>"; };
+		4D3B39601D888B7D003B7D59 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Card.m; path = Model/Card.m; sourceTree = "<group>"; };
+		4D3B39641D889662003B7D59 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Deck.h; path = Model/Deck.h; sourceTree = "<group>"; };
+		4D3B39651D889662003B7D59 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Deck.m; path = Model/Deck.m; sourceTree = "<group>"; };
+		4D3B39671D89862D003B7D59 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingCard.h; path = Model/PlayingCard.h; sourceTree = "<group>"; };
+		4D3B39681D89862D003B7D59 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingCard.m; path = Model/PlayingCard.m; sourceTree = "<group>"; };
+		4D3B396A1D8990B0003B7D59 /* PlayingSurface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayingSurface.h; path = Model/PlayingSurface.h; sourceTree = "<group>"; };
+		4D3B396B1D8990B0003B7D59 /* PlayingSurface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayingSurface.m; path = Model/PlayingSurface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +113,6 @@
 		4D3B39251D8866FC003B7D59 /* card-matching */ = {
 			isa = PBXGroup;
 			children = (
-				4D3B39291D8866FC003B7D59 /* AppDelegate.h */,
-				4D3B392A1D8866FC003B7D59 /* AppDelegate.m */,
 				4D3B392C1D8866FC003B7D59 /* ViewController.h */,
 				4D3B392D1D8866FC003B7D59 /* ViewController.m */,
 				4D3B392F1D8866FC003B7D59 /* Main.storyboard */,
@@ -110,6 +120,7 @@
 				4D3B39341D8866FC003B7D59 /* LaunchScreen.storyboard */,
 				4D3B39371D8866FC003B7D59 /* Info.plist */,
 				4D3B39261D8866FC003B7D59 /* Supporting Files */,
+				4D3B39631D888BF4003B7D59 /* Model */,
 			);
 			path = "card-matching";
 			sourceTree = "<group>";
@@ -117,6 +128,8 @@
 		4D3B39261D8866FC003B7D59 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D3B39291D8866FC003B7D59 /* AppDelegate.h */,
+				4D3B392A1D8866FC003B7D59 /* AppDelegate.m */,
 				4D3B39271D8866FC003B7D59 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -138,6 +151,21 @@
 				4D3B394D1D8866FC003B7D59 /* Info.plist */,
 			);
 			path = "card-matchingUITests";
+			sourceTree = "<group>";
+		};
+		4D3B39631D888BF4003B7D59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4D3B395F1D888B7D003B7D59 /* Card.h */,
+				4D3B39601D888B7D003B7D59 /* Card.m */,
+				4D3B39671D89862D003B7D59 /* PlayingCard.h */,
+				4D3B39681D89862D003B7D59 /* PlayingCard.m */,
+				4D3B39641D889662003B7D59 /* Deck.h */,
+				4D3B39651D889662003B7D59 /* Deck.m */,
+				4D3B396A1D8990B0003B7D59 /* PlayingSurface.h */,
+				4D3B396B1D8990B0003B7D59 /* PlayingSurface.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +235,7 @@
 				TargetAttributes = {
 					4D3B39221D8866FC003B7D59 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = F74H8GWH7V;
 					};
 					4D3B393B1D8866FC003B7D59 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -270,9 +299,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D3B39691D89862D003B7D59 /* PlayingCard.m in Sources */,
+				4D3B39661D889662003B7D59 /* Deck.m in Sources */,
+				4D3B396C1D8990B0003B7D59 /* PlayingSurface.m in Sources */,
 				4D3B392E1D8866FC003B7D59 /* ViewController.m in Sources */,
 				4D3B392B1D8866FC003B7D59 /* AppDelegate.m in Sources */,
 				4D3B39281D8866FC003B7D59 /* main.m in Sources */,
+				4D3B39611D888B7D003B7D59 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,10 +446,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "card-matching/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MarkWillett.card-matching";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -424,10 +460,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "card-matching/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MarkWillett.card-matching";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

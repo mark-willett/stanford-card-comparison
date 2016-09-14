@@ -7,21 +7,51 @@
 //
 
 #import "ViewController.h"
+#import "PlayingSurface.h"
 
 @interface ViewController ()
-
+@property (nonatomic) int flipCount;
+@property (strong, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (strong, nonatomic) PlayingSurface* playingSurface;
+@property (strong, nonatomic) IBOutlet UIButton *reloadGameButton;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+-(PlayingSurface *)playingSurface{
+    if(!_playingSurface){
+        _playingSurface = [[PlayingSurface alloc] init];
+    }
+    
+    return _playingSurface;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setFlipCount:(int)flipCount{
+    _flipCount = flipCount;
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
+    NSLog(@"Flip count set to: %d", self.flipCount);
+}
+
+- (IBAction)touchCardButton:(UIButton *)sender {
+
+    if([sender.currentTitle length] != 0){
+        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"]
+                          forState:UIControlStateNormal];
+        [sender setTitle:@"" forState:UIControlStateNormal];
+    } else {
+        [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
+                          forState:UIControlStateNormal];
+        [sender setTitle:@"A♣︎" forState:UIControlStateNormal];
+    }
+    
+    self.flipCount++;
+    
+}
+
+
+-(IBAction)touchNewGame:(UIButton *)sender{
+    [self.playingSurface newGame];
 }
 
 @end
