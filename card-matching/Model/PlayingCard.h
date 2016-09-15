@@ -11,9 +11,12 @@
 @interface PlayingCard : Card
 
 @property (strong, nonatomic) NSString *suit;
-@property (strong, nonatomic) NSString *value;
+@property (strong, nonatomic) NSString *rank;
 
+
+-(instancetype) initWithSuit:(NSString *) suit
+                     andRank:(NSString *) rank;
 +(NSArray *) validSuits;
-+(NSArray *) validValues;
++(NSArray *) validRanks;
 
 @end

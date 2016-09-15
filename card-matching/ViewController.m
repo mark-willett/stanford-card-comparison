@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PlayingSurface.h"
+#import "Card.h"
 
 @interface ViewController ()
 @property (nonatomic) int flipCount;
@@ -21,7 +22,8 @@
 
 -(PlayingSurface *)playingSurface{
     if(!_playingSurface){
-        _playingSurface = [[PlayingSurface alloc] init];
+        int uniqueCardsNeeded = ([self.cardButtons count] / 2);
+        _playingSurface = [[PlayingSurface alloc] initWithDeck:uniqueCardsNeeded];
     }
     
     return _playingSurface;
@@ -30,28 +32,63 @@
 -(void)setFlipCount:(int)flipCount{
     _flipCount = flipCount;
     self.flipsLabel.text = [NSString stringWithFormat:@"Flips: %d", self.flipCount];
-    NSLog(@"Flip count set to: %d", self.flipCount);
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
-
-    if([sender.currentTitle length] != 0){
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardback"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:@"" forState:UIControlStateNormal];
-    } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:@"A♣︎" forState:UIControlStateNormal];
-    }
+    int cardButtonIndex = [self.cardButtons indexOfObject:sender];
+    Card* chosenCard = self.playingSurface.drawnCards[cardButtonIndex];
+    [self.playingSurface selectCard:chosenCard];
     
+    NSLog(@"chosenButtonIndex: %d", cardButtonIndex);
+    
+    [self updateUI];
     self.flipCount++;
     
 }
 
+-(void)updateUI{
+    for(int index = 0; index < [self.cardButtons count]; index++){
+        Card* currentCard = self.playingSurface.drawnCards[index];
+        
+        [self.cardButtons[index] setTitle:[self checkLabel:currentCard] forState:UIControlStateNormal];
+        [self.cardButtons[index] setBackgroundImage:[self checkBackground:currentCard] forState: UIControlStateNormal];
+    }
+}
+
+-(NSString *)checkLabel:(Card*) card{
+    
+    if([card isMatched]){
+        return card.contents;
+    }
+    
+    if(self.playingSurface.selectedCard == card){
+        return card.contents;
+    }
+    
+    return @"";
+}
+
+-(UIImage *)checkBackground:(Card*) card{
+    
+    if([card isMatched]){
+        NSLog(@"Card %d is matched", index);
+        return [UIImage imageNamed:@"cardfront"];
+    }
+    
+    if(self.playingSurface.selectedCard == card){
+        NSLog(@"Card %d is selected", index);
+        return [UIImage imageNamed:@"cardfront"];
+    }
+    
+    NSLog(@"Card %d isn't matched", index);
+    return [UIImage imageNamed:@"cardback"];
+}
 
 -(IBAction)touchNewGame:(UIButton *)sender{
-    [self.playingSurface newGame];
+    int uniqueCardsNeeded = ([self.cardButtons count] / 2);
+    _playingSurface = [[PlayingSurface alloc] initWithDeck:uniqueCardsNeeded];
+    self.flipCount = 0;
+    [self updateUI];
 }
 
 @end

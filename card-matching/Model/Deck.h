@@ -11,6 +11,8 @@
 
 @interface Deck : NSObject
 
+-(instancetype) initWithCards;
+
 -(void) addCard:(Card *) newCard;
 
 -(void) reloadDeck;

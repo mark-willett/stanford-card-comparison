@@ -15,9 +15,8 @@
 @property (strong, nonatomic) NSMutableArray* drawnCards;
 @property (strong, nonatomic) Card* selectedCard;
 
--(void) newGame:(NSInteger)cardCount;
--(Card *) getRandomCard;
--(void) selectCard:(Card *) card;
-
+-(instancetype) initWithDeck:(int) tableCardCount;
+-(void) newGame;
+-(void) selectCard:(Card*) card;
 
 @end

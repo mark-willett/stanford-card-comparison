@@ -10,15 +10,29 @@
 
 @implementation PlayingCard
 
+-(instancetype) initWithSuit:(NSString *) suit
+                    andRank:(NSString *) rank {
+    self = [super init];
+    
+    if(self){
+        [self setSuit:suit];
+        [self setRank:rank];
+        NSString* newContents = [NSString stringWithFormat:@"%@%@", self.rank, self.suit];
+        [self setContents:newContents];
+    }
+    
+    return self;
+}
+
 -(void) setSuit:(NSString *)suit{
     if([[PlayingCard validSuits] containsObject:suit]){
         _suit = suit;
     }
 }
 
--(void) setRank:(NSString *) value{
-    if([[PlayingCard validValues] containsObject:value]){
-        _value = value;
+-(void) setRank:(NSString *) rank{
+    if([[PlayingCard validRanks] containsObject:rank]){
+        _rank = rank;
     }
 }
 
@@ -26,8 +40,8 @@
     return @[@"♠︎",@"♣︎",@"♥︎",@"♦︎"];
 }
 
-+(NSArray *) validValues{
-        return @[@"A",@"1",@"2",@"3",@"4",@"5",@"6",
++(NSArray *) validRanks{
+        return @[@"A",@"2",@"3",@"4",@"5",@"6",
                  @"7",@"8",@"9",@"10",@"J",@"Q",@"K"];
 }
 

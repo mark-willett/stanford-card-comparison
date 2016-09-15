@@ -13,46 +13,91 @@
 
 @property (strong, nonatomic) Deck* deck;
 @property (nonatomic, getter = isCardSelected) BOOL cardSelected;
-@property (strong, nonatomic) Card* selectedCard;
+@property (nonatomic) int tableCardCount;
 
 @end
 
 @implementation PlayingSurface
 
+-(instancetype) initWithDeck:(int) tableCardCount{
+    self = [self init];
+    
+    if(self){
+        self.deck = [[Deck alloc] initWithCards];
+        self.tableCardCount = tableCardCount;
+        self.cardSelected = NO;
+        [self layTable];
+    }
+    
+    return self;
+}
+
 -(NSMutableArray *)drawnCards{
     if(!_drawnCards){
+        NSLog(@"Creating a new mutable array for drawn cards");
         _drawnCards = [[NSMutableArray alloc] init];
     }
     return _drawnCards;
 }
 
--(void)newGame:(NSInteger)cardCount{
-    [self.deck reloadDeck];
+-(void)layTable{
+    NSMutableArray* unshuffled = [[NSMutableArray alloc] init];
     
-    for(NSInteger index = 0; index < cardCount; index++){
-        Card* newCard = [[Card alloc] init];
-        newCard = [self.deck drawRandomCard];
-        [self.drawnCards addObject:newCard];
-        [self.drawnCards addObject:newCard];
+    for(int i = 0; i < self.tableCardCount; i++){
+        Card* randomCard = [self.deck drawRandomCard];
+        NSLog(@"Drew card: %@", randomCard.contents);
+        [unshuffled addObject:randomCard];
+        Card* cardCopy = [[Card alloc] init];
+        [cardCopy setContents:randomCard.contents];
+        [unshuffled addObject:cardCopy];
     }
+    
+    for(int i = 0; i < (self.tableCardCount * 2); i++){
+        Card* randomTableCard = [self getRandomCard:unshuffled];
+        NSLog(@"Added %@ to the table", randomTableCard.contents);
+        [self.drawnCards addObject:randomTableCard];
+    }
+    
 }
 
--(Card *)getRandomCard{
-    unsigned index = arc4random() % [self.drawnCards count];
-    Card* returnCard = [[Card alloc]init];
-    returnCard = self.drawnCards[index];
-    [self.drawnCards removeObject:returnCard];
+-(void)newGame{
+    [self.deck reloadDeck];
+    [self layTable];
+}
+
+-(Card *)getRandomCard:(NSMutableArray *) cards{
+    unsigned index = arc4random() % [cards count];
+    Card* returnCard = cards[index];
+    [cards removeObjectAtIndex:index];
     return returnCard;
 }
 
 -(void)selectCard:(Card *) card{
+    
+    //card is already selected
     if(self.isCardSelected){
-        NSInteger matchValue = [self.selectedCard match:card];
-        if(matchValue == 1){
-            [card setMatched:YES];
-            [self.selectedCard setMatched:YES];
+        //same card was clicked again
+        if(card == self.selectedCard){
+            self.cardSelected = NO;
+            self.selectedCard = nil;
+        //different card clicked
+        } else {
+            //different card clicked
+            int matchValue = [self.selectedCard match:card];
+            //cards match
+            if(matchValue == 1){
+                [self.selectedCard setMatched:YES];
+                [card setMatched:YES];
+            }
+            
+            //deselect the currently held card
+            self.cardSelected = NO;
+            self.selectedCard = nil;
         }
+        
+    //no card is selected
     } else {
+        //hold the card
         self.cardSelected = YES;
         self.selectedCard = card;
     }

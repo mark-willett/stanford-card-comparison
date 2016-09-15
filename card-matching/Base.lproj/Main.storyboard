@@ -32,10 +32,10 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="13" y="10" width="97" height="28"/>
+                                    <rect key="frame" x="20" y="42" width="97" height="28"/>
                                 </variation>
                                 <connections>
-                                    <action selector="touchNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZrD-2J-n5K"/>
+                                    <action selector="touchNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BJZ-Xw-RQF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyf-RF-mXn">
@@ -45,7 +45,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="59" y="155" width="64" height="96"/>
+                                    <rect key="frame" x="69" y="159" width="64" height="96"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Rx-jv-577"/>
@@ -58,7 +58,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="162" y="155" width="64" height="96"/>
+                                    <rect key="frame" x="172" y="159" width="64" height="96"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D3X-AQ-UNo"/>
@@ -71,10 +71,10 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="257" y="155" width="64" height="96"/>
+                                    <rect key="frame" x="267" y="159" width="64" height="96"/>
                                 </variation>
                                 <connections>
-                                    <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJT-EQ-74W"/>
+                                    <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HY0-9B-KLa"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wY-H2-rUx">
@@ -84,7 +84,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="59" y="274" width="64" height="96"/>
+                                    <rect key="frame" x="69" y="278" width="64" height="96"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FmB-ak-aMd"/>
@@ -97,7 +97,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="162" y="274" width="64" height="96"/>
+                                    <rect key="frame" x="172" y="278" width="64" height="96"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fXg-0C-6Gi"/>
@@ -110,7 +110,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="256" y="274" width="64" height="96"/>
+                                    <rect key="frame" x="266" y="278" width="64" height="96"/>
                                 </variation>
                                 <connections>
                                     <action selector="touchCardButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xO7-tJ-dlw"/>
@@ -145,11 +145,13 @@
                     </view>
                     <connections>
                         <outlet property="flipsLabel" destination="RlV-VS-jvW" id="N9H-1U-DAB"/>
-                        <outlet property="newGameButton" destination="k3N-OG-UGI" id="GLa-Vp-Gmp"/>
                         <outlet property="reloadGameButton" destination="k3N-OG-UGI" id="Ue2-ii-NsF"/>
-                        <outletCollection property="cardBUttons" destination="qOD-8T-98j" id="7xU-AH-dJH"/>
-                        <outletCollection property="cardBUttons" destination="qOD-8T-98j" id="lAT-1h-BkB"/>
                         <outletCollection property="cardButtons" destination="Nyo-C6-Tdl" id="NAg-cY-iUx"/>
+                        <outletCollection property="cardButtons" destination="qyf-RF-mXn" id="zls-yF-B7j"/>
+                        <outletCollection property="cardButtons" destination="tAL-bd-Kbr" id="eNV-m0-c4E"/>
+                        <outletCollection property="cardButtons" destination="qOD-8T-98j" id="5aw-90-oXZ"/>
+                        <outletCollection property="cardButtons" destination="XRc-51-5WL" id="obs-VU-kwF"/>
+                        <outletCollection property="cardButtons" destination="5wY-H2-rUx" id="G2D-In-XDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

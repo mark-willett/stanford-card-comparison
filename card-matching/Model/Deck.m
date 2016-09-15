@@ -17,11 +17,30 @@
 
 @implementation Deck
 
+-(instancetype) initWithCards{
+    self = [self init];
+    
+    if(self){
+        [self fillDeck];
+    }
+    
+    return self;
+}
+
 -(NSMutableArray *) cards{
     if(!_cards){
         _cards = [[NSMutableArray alloc] init];
     }
     return _cards;
+}
+
+-(void) fillDeck{
+    for(NSString *suit in [PlayingCard validSuits]){
+        for(NSString *rank in [PlayingCard validRanks]){
+            PlayingCard *card = [[PlayingCard alloc] initWithSuit:suit andRank:rank];
+            [self addCard:card];
+        }
+    }
 }
 
 -(void) addCard:(Card *)newCard{
@@ -30,21 +49,7 @@
 
 -(void) reloadDeck{
     [self emptyDeck];
-    
-    for(NSString *suit in [PlayingCard validSuits]){
-        for(NSString *value in [PlayingCard validValues]){
-            PlayingCard *card = [[PlayingCard alloc] init];
-            [card setSuit:suit];
-            [card setValue:value];
-            NSString* cardContents = [[NSString alloc] init];
-            
-            
-            cardContents = card.value;
-            [cardContents stringByAppendingString:card.suit];
-            card.contents = cardContents;
-            [self addCard:card];
-        }
-    }
+    [self fillDeck];
 }
 
 -(void) emptyDeck{
